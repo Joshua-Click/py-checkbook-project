@@ -25,35 +25,42 @@ def get_balance():
 # calls to the get_balance function to output the users balance
 def check_balance():
     balance = get_balance()
-    print(f'Your balance is {balance}')
+    print(f' YOUR BALANCE IS: $ {balance}')
     
 
 
 # if txt file does not exist, this will create one and save as 'withdraw, amount'
 def withdrawal():
-    amount = float(input('How much would you like to withdraw'))
-    if os.path.exists('/Users/click/codeup-data-science/py-checkbook-project/cb_txt.txt'):
-        
-        with open('cb_txt.txt', 'a') as f:
-            f.write(f' withdraw, {amount}\n')
-    else:
-        # if no txt file exists ---> gets created 
-        with open('cb_txt.txt', 'w') as f:
-            f.write(f' withdraw, {amount}\n')
-    
+    try:
+        amount = float(input('How much would you like to withdraw'))
+        if os.path.exists('/Users/click/codeup-data-science/py-checkbook-project/cb_txt.txt'):
+            
+            with open('cb_txt.txt', 'a') as f:
+                f.write(f' withdraw, {amount}\n')
+        else:
+            # if no txt file exists ---> gets created 
+            with open('cb_txt.txt', 'w') as f:
+                f.write(f' withdraw, {amount}\n')
+    except ValueError:
+        print('This is not a valid number')
 
 
 # if txt file does not exist, this will create one and save as 'deposit, amount'
 def deposit():
-    amount = float((input('How much?')))
-
-    if os.path.exists('/Users/click/codeup-data-science/py-checkbook-project/cb_txt.txt'):
-        with open('cb_txt.txt', 'a') as f:
-            f.write(f'deposit,{amount}\n')
-    # if no txt file exists ---> gets created        
-    else:
-        with open('cb_txt.txt', 'w') as f:
-            f.write(f'deposit, {amount}\n')
+    # the try, except argument is so that the program doesnt break due to a string
+    try:
+        amount = float((input('How much?')))
+    
+        if os.path.exists('/Users/click/codeup-data-science/py-checkbook-project/cb_txt.txt'):
+            with open('cb_txt.txt', 'a') as f:
+                f.write(f'deposit,{amount}\n')
+            # if no txt file exists ---> gets created        
+        else:
+            with open('cb_txt.txt', 'w') as f:
+                f.write(f'deposit, {amount}\n')
+    except ValueError:
+        print('This is not a valid number')
+    
 
 
 
@@ -72,7 +79,7 @@ def exit_app():
 
 
 # #Main Menu
-print('~~~ Welcome to your terminal checkbook! ~~~')
+print('~~~ Welcome to your Terminal Checkbook! ~~~')
 
 #amount will be the input variable
 amount = 0
@@ -82,13 +89,15 @@ balance = 0
 while True:
 
     # asks the question as per the assignment
+    print('')
     print('What would you like to do?')
-
+    print('')
     # gives a menu
-    print('1) current balance')
-    print('2) withdraw funds')
-    print('3) deposit funds')
-    print('4 exit')
+    print('1) Current Balance')
+    print('2) Withdraw Funds')
+    print('3) Deposit Funds')
+    print('4) Exit')
+    print('')
 
     # user input
     choice = input('Your choice?')
