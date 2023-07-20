@@ -45,6 +45,7 @@ def withdrawal():
         print('This is not a valid number')
 
 
+
 # if txt file does not exist, this will create one and save as 'deposit, amount'
 def deposit():
     # the try, except argument is so that the program doesnt break due to a string
@@ -61,7 +62,6 @@ def deposit():
     except ValueError:
         print('This is not a valid number')
     
-
 
 
 # used for an invalid input from the choice option
