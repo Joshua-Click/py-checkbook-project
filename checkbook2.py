@@ -33,7 +33,7 @@ def check_balance():
 def withdrawal():
     try:
         amount = float(input('How much would you like to withdraw'))
-        if os.path.exists('/Users/click/codeup-data-science/py-checkbook-project/cb_txt.txt'):
+        if os.path.exists('cb_txt.txt'):
             
             with open('cb_txt.txt', 'a') as f:
                 f.write(f' withdraw, {amount}\n')
@@ -52,7 +52,7 @@ def deposit():
     try:
         amount = float((input('How much?')))
     
-        if os.path.exists('/Users/click/codeup-data-science/py-checkbook-project/cb_txt.txt'):
+        if os.path.exists('cb_txt.txt'):
             with open('cb_txt.txt', 'a') as f:
                 f.write(f'deposit,{amount}\n')
             # if no txt file exists ---> gets created        
